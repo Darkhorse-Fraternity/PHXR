@@ -27,7 +27,7 @@ import createInvoke from 'react-native-webview-invoke/native'
 // const noWifi = require('../../../source/img/xy_nowifi/xy_nowifi.png');
 @connect(
     state =>({
-        userId: state.login.data.userId+''
+        userId: state.login.data.userId?state.login.data.userId+'':''
     }),
     (dispatch, props) =>({
     })
@@ -78,8 +78,15 @@ class BaseWebView extends Component {
     shouldComponentUpdate(nextProps: Object,nextState:Object) {
         return !immutable.is(this.props, nextProps) ||
             !immutable.is(this.state,nextState)
-
     }
+
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.userId != this.props.userId){
+            this.sendUserID(nextProps.userId)
+        }
+    }
+
 
     goBack = ()=>{
         this.props.pop();
@@ -90,20 +97,24 @@ class BaseWebView extends Component {
     }
 
 
+    
     webview: WebView
     invoke = createInvoke(() => this.webview)
-
+    sendUserID:Function
 
 
     componentDidMount() {
         this.invoke.define('goBack', this.goBack)
-        this.invoke.define('gologin', this.gologin)
+            .define('gologin', this.gologin)
+
+        this.sendUserID = this.invoke.bind('sendUserID')
+        this.sendUserID(this.props.userId)
         this.props.refresh({renderLeftComponent:this.renderLeftComponent.bind(this),title:'加载中。。'});
     }
 
     _onNavigationStateChange(state:Object){
         // console.log('state:',state);
-        if(state.title && state.title.length > 0 ){
+        if(state.title && state.title.length > 0 && !state.title.startsWith('103.236.253') ){
             this && this.props.refresh({title:state.title});
         }
         this.canGoBack = state.canGoBack;
@@ -178,12 +189,13 @@ class BaseWebView extends Component {
                 <WebView
                     ref={w => {
                         this.webview = w
-                        this.props.getWebView(w)
+                        this.props.getWebView && this.props.getWebView(w)
+                        {/*this.sendUserID(this.props.userID)*/}
                     }}
                     automaticallyAdjustContentInsets={false}
                     style={styles.webView}
                     source={{uri: url,headers:headers}}
-                    // javaScriptEnabled={false}
+                    javaScriptEnabled={true}
                     domStorageEnabled={true}
                     decelerationRate="normal"
                     onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest.bind(this)}

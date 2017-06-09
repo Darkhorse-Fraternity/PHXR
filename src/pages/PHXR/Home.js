@@ -144,7 +144,9 @@ export  default  class Home extends Component {
                     return (
                         <TouchableOpacity
                             onPress={()=>{
-                                     push({key:'WebView',url:obj.activityUrl})
+                                const url = obj.activityUrl
+                               {/*const  url = "http://103.236.253.138:9090/phxrProject/hy/h5/smfw.html"*/}
+                                     push({key:'WebView',url:url})
                                  }}
                             key={'key_'+i}
                             style={styles.newsSlide}>

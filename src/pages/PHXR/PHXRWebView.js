@@ -93,7 +93,7 @@ export  default  class PHXRWebView extends Component {
 
     _onNavigationStateChange(state: Object) {
         // console.log('state:',state);
-        if (state.title && state.title.length > 0) {
+        if (state.title && state.title.length > 0 && !state.title.startsWith('103.236.253')){
             // this && this.props.refresh({title: state.title});
             this.setState({title:state.title,canGoBack:state.canGoBack})
         }
