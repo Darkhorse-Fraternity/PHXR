@@ -12,7 +12,7 @@ import ReactNative, {
     Platform,
     Linking
 } from 'react-native';
-
+import * as immutable from 'immutable';
 import {navbarHeight,screenHeight} from '../../util';
 // import {httpHeader} from '../../configure';
 // import {userManager} from '../../util/XGlobal';
@@ -23,8 +23,15 @@ import { navigatePush, navigatePop, navigateRefresh } from '../../redux/actions/
 
 const UIManager = require('UIManager');
 const WEBVIEW_REF = 'webview';
-
+import createInvoke from 'react-native-webview-invoke/native'
 // const noWifi = require('../../../source/img/xy_nowifi/xy_nowifi.png');
+@connect(
+    state =>({
+        userId: state.login.data.userId+''
+    }),
+    (dispatch, props) =>({
+    })
+)
 class BaseWebView extends Component {
 
     constructor(props:Object){
@@ -53,7 +60,7 @@ class BaseWebView extends Component {
     canGoBack:boolean = false;
     backEventHandle() {
         if (this.canGoBack) {
-            this.refs[WEBVIEW_REF].goBack();
+            this.webview.goBack();
         }else {
             this.props.pop();
         }
@@ -68,7 +75,29 @@ class BaseWebView extends Component {
         );
     }
 
+    shouldComponentUpdate(nextProps: Object,nextState:Object) {
+        return !immutable.is(this.props, nextProps) ||
+            !immutable.is(this.state,nextState)
+
+    }
+
+    goBack = ()=>{
+        this.props.pop();
+    }
+
+    gologin = ()=>{
+        this.props.push('LoginView')
+    }
+
+
+    webview: WebView
+    invoke = createInvoke(() => this.webview)
+
+
+
     componentDidMount() {
+        this.invoke.define('goBack', this.goBack)
+        this.invoke.define('gologin', this.gologin)
         this.props.refresh({renderLeftComponent:this.renderLeftComponent.bind(this),title:'加载中。。'});
     }
 
@@ -78,6 +107,7 @@ class BaseWebView extends Component {
             this && this.props.refresh({title:state.title});
         }
         this.canGoBack = state.canGoBack;
+        this.props.onNavigationStateChange && this.props.onNavigationStateChange(state)
     }
 
     _onError(error:Object){
@@ -132,17 +162,27 @@ class BaseWebView extends Component {
         return false;
     }
 
+
+
+
+    webview: WebView
+    invoke = createInvoke(() => this.webview)
     render() {
         //  console.log(this.props.scene);
         // console.log(this.props.scene .route.url);
         //  var header = Object.assign({}, httpHeader,{token:userManager.userData.user_token || ""})
+        const headers = {userId: this.props.userId + ''}
+        const url = this.props.url || this.props.scene.route.url
         return (
             <View style={[styles.container]}>
                 <WebView
-                    ref={WEBVIEW_REF}
+                    ref={w => {
+                        this.webview = w
+                        this.props.getWebView(w)
+                    }}
                     automaticallyAdjustContentInsets={false}
                     style={styles.webView}
-                    source={{uri: this.props.scene.route.url,headers:this.props.scene.route.headers}}
+                    source={{uri: url,headers:headers}}
                     // javaScriptEnabled={false}
                     domStorageEnabled={true}
                     decelerationRate="normal"
@@ -154,6 +194,7 @@ class BaseWebView extends Component {
                     onError={this._onError}
                     onLoadStart={this._onLoadStart}
                     onLoad={this._onLoad} //
+                    onMessage={this.invoke.listener}
                     //onMessage={()=>{}}
                     //onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest.bind(this)}//iOS,Android 咱么处理
                     //onLoadEnd

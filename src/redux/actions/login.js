@@ -118,7 +118,7 @@ export function register(state: Object): Function {
     const advisersCodeEnable = state.advisersCode.length > 0?"1":"0"
 
     const params = phxr_register(state.userName, state.phone,state.ymCode,
-        state.password, "0", advisersCodeEnable, state.advisersCode, "0", cityCode);
+        state.password, state.isEP?"2":"0", advisersCodeEnable, state.advisersCode, "0", cityCode);
 
     return dispatch => {
         dispatch(_loginRequest());
