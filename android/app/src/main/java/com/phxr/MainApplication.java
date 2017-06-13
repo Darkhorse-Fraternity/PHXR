@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import com.imagepicker.ImagePickerPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.phxr.CWebView.RNWebViewPackage;
 import com.theweflex.react.WeChatPackage;
 
 import java.util.Arrays;
@@ -40,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
                     new VectorIconsPackage(),
                     new ImagePickerPackage(),
                     new ReactNativeDialogsPackage(),
-                    new RNDeviceInfo()
+                    new RNDeviceInfo(),
+                    new RNWebViewPackage()
             );
         }
     };

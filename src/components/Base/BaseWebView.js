@@ -6,7 +6,7 @@ import ReactNative, {
     Text,
     View,
     ScrollView,
-    WebView,
+    WebView as WebViewIOS,
     TouchableOpacity,
     Image,
     Platform,
@@ -20,6 +20,16 @@ import ExceptionView, {ExceptionType} from '../ExceptionView';
 import {connect} from 'react-redux';
 import { navigatePush, navigatePop, navigateRefresh } from '../../redux/actions/nav';
 // import Alipay from 'react-native-payment-alipay';
+
+
+import WebViewAndroid from './WebViewAndroid'
+
+
+console.log('WebViewAndroid:', WebViewAndroid);
+const WebView = Platform.OS == 'ios'? WebViewIOS:WebViewAndroid
+// const WebView = WebViewIOS
+
+
 
 const UIManager = require('UIManager');
 const WEBVIEW_REF = 'webview';
@@ -108,7 +118,10 @@ class BaseWebView extends Component {
             .define('gologin', this.gologin)
 
         this.sendUserID = this.invoke.bind('sendUserID')
+        // console.log('test:', this.props.userI);
+        console.log('this.props.userId:', this.props.userId);
         this.sendUserID(this.props.userId)
+
         this.props.refresh({renderLeftComponent:this.renderLeftComponent.bind(this),title:'加载中。。'});
     }
 
@@ -122,10 +135,11 @@ class BaseWebView extends Component {
     }
 
     _onError(error:Object){
-        console.log("webError:",error);
+        this.webview.reload()
+        // console.log("webError:",error);
     }
     _onLoadStart(event){
-        console.log("onloadStart:", event.nativeEvent);
+        // console.log("onloadStart:", event.nativeEvent);
     }
     _onLoad(){
 

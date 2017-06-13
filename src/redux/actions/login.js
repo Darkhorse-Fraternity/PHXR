@@ -225,6 +225,7 @@ function logout2() {
     return {
         type: LOGOUT,
         index: 0,
+        data:{}
     }
 }
 
