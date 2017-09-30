@@ -302,6 +302,13 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		CCD37DB41F6A7A4D00ED4646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97BCDBA17C724339888AF233 /* RCTWeChat.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 10D6D7A41F160C250066F0F3;
+			remoteInfo = RCTWeChatTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -347,7 +354,6 @@
 		C5795D33A59FFF7734212F5B /* Pods-PHXR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHXR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHXR/Pods-PHXR.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0242881DF69F4C0045A14A /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		CC08B1F51E82827700189D66 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		CC1FD98C1E48C51000ECB2CF /* PHXR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PHXR.entitlements; path = PHXR/PHXR.entitlements; sourceTree = "<group>"; };
 		CC3E39A51E2622570019B85F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CC3E39A71E2622610019B85F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CC3E39A91E2622690019B85F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -376,6 +382,7 @@
 		CC4E425B1DF59D2C005783A6 /* NSURL+EasyExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+EasyExtend.m"; sourceTree = "<group>"; };
 		CC4E425C1DF59D2C005783A6 /* UIWindow+LK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+LK.h"; sourceTree = "<group>"; };
 		CC4E425D1DF59D2C005783A6 /* UIWindow+LK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+LK.m"; sourceTree = "<group>"; };
+		CC72C9BD1F70AB07003D2C09 /* PHXR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PHXR.entitlements; path = PHXR/PHXR.entitlements; sourceTree = "<group>"; };
 		CC7959AA1E02A6A600FAA8EB /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		CCA664661DFFFFC400BD9511 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		CCC010561DF9485700613165 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -527,7 +534,7 @@
 		13B07FAE1A68108700A75B9A /* PHXR */ = {
 			isa = PBXGroup;
 			children = (
-				CC1FD98C1E48C51000ECB2CF /* PHXR.entitlements */,
+				CC72C9BD1F70AB07003D2C09 /* PHXR.entitlements */,
 				CCC010561DF9485700613165 /* InfoPlist.strings */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -635,6 +642,7 @@
 				14D76F37BE6FB929EF410EB7 /* Pods */,
 				115E0148E2FB61C13FFE9539 /* Frameworks */,
 				75ECA9F6022C47239496F9FF /* Resources */,
+				CC6500F51F7403D3006C6BAC /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -670,6 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				CC3E39A31E260A200019B85F /* libRCTWeChat.a */,
+				CCD37DB51F6A7A4D00ED4646 /* RCTWeChatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -764,6 +773,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CC6500F51F7403D3006C6BAC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				858A1DA5B94F48AA98B5A47F /* libRNDeviceInfo.a */,
+				03425A176E554E0CA0F9D1AB /* libRNImagePicker.a */,
+				16815CB8C8B24DFDB0DBFA28 /* libRNVectorIcons.a */,
+				B33F8BA4045C4A09A8E1CDED /* libRCTQQAPI.a */,
+				8D5A78FFFBE64862911175F2 /* libRCTWeChat.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		CC7959AB1E02A6A600FAA8EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,7 +855,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = G54H3R6236;
+						DevelopmentTeam = 3XYLE4WU79;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -844,7 +865,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1175,6 +1196,13 @@
 			remoteRef = CCAC9EDC1E38E6E2004BB455 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		CCD37DB51F6A7A4D00ED4646 /* RCTWeChatTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RCTWeChatTests.xctest;
+			remoteRef = CCD37DB41F6A7A4D00ED4646 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1324,7 +1352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = G54H3R6236;
+				DEVELOPMENT_TEAM = 3XYLE4WU79;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1352,7 +1380,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = G54H3R6236;
+				DEVELOPMENT_TEAM = 3XYLE4WU79;
 				INFOPLIST_FILE = PHXRTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1376,6 +1404,7 @@
 			baseConfigurationReference = C5795D33A59FFF7734212F5B /* Pods-PHXR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PHXR/PHXR.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 3XYLE4WU79;
@@ -1419,7 +1448,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fj.phxr;
 				PRODUCT_NAME = PHXR;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1429,6 +1458,7 @@
 			baseConfigurationReference = 5D8C4A73B937A1EB53019824 /* Pods-PHXR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PHXR/PHXR.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XYLE4WU79;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI/**";
@@ -1467,7 +1497,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fj.phxr;
 				PRODUCT_NAME = PHXR;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

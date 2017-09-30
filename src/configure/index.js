@@ -4,8 +4,8 @@
 
 import {LeanCloud_APP_ID,LeanCloud_APP_KEY} from './leancloud'
 const defaultHost = !__DEV__ ?
-    /*release*/   '103.236.253.138:8088/phxr' :
-    /*debug*/     '103.236.253.138:8088/phxr'
+    /*release*/   'app.puhuixinrong.com:9090/phxr' :
+    /*debug*/     'app.puhuixinrong.com:9090/phxr'
     //'task.dayi.im'
 
 //

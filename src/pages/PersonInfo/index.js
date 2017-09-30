@@ -288,7 +288,7 @@ class PersonInfo extends React.Component {
                 <View style={styles.group}>
                     {this._renderRow('关于我们', "", () => {
                         // NavigationManager.goToPage("AlterPwd");
-                        const webUrl = 'http://103.236.253.138:8088/aboutus.html';
+                        const webUrl = 'http://app.puhuixinrong.com:9090/aboutus.html';
                         this.props.push({key: 'WebView', title: '关于我们', url: webUrl});
                     })}
                 </View>

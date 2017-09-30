@@ -27,7 +27,7 @@ import {navigateReplaceIndex, navigatePush} from '../../redux/actions/nav'
 import {iForgot} from '../../redux/actions/login'
 import {checkPhoneNum, checkIDCard,Toast} from '../../util'
 
-const webUrl = 'https://static.dayi.im/static/fudaojun/rule.html?version=20160603182000';
+const webUrl = 'http://103.236.253.138:9090/phxrProject/hy/h5/declare.html';
 class RegPhone extends Component {
     constructor(props: Object) {
         super(props);

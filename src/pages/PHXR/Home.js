@@ -30,7 +30,7 @@ import {Button, WhiteSpace} from 'antd-mobile';
 import {icon_class} from '../../../source'
 import {logo} from '../../../source'
 import {phxr_app_home} from '../../request/qzapi'
-import {request} from '../../redux/actions/req'
+import {request,reqChangeData} from '../../redux/actions/req'
 var DeviceInfo = require('react-native-device-info');
 @connect(
     state =>({
@@ -49,6 +49,16 @@ var DeviceInfo = require('react-native-device-info');
 
             })
 
+        },
+        cleanRed:(key,i)=>{
+            dispatch((dispatch, getState)=> {
+                const data = getState().req.get('phxr_app_home').get('data').toJS()
+                // console.log('userType:', userType);
+                data[key][i]['ifRedShow'] = 0
+                console.log('test:', data);
+
+                dispatch(reqChangeData('phxr_app_home',data))
+            })
         }
     })
 )
@@ -86,9 +96,11 @@ export  default  class Home extends Component {
                                     push('LoginView')
                                 }else {
                                   push({key:'WebView',url:classifyArea.activityUrl})
+                                  classifyArea.ifRedShow == 1 && this.props.cleanRed('classifyArealist',i)
+
                                }
                      }}
-                style={{marginLeft:25}}
+                style={{width:Dimensions.get('window').width/4,alignItems:'center'}}
                 key={'key_'+i}>
                 {classifyArea.ifRedShow == 1 && (<View style={styles.redTip}/>)}
                 <Image
@@ -110,6 +122,7 @@ export  default  class Home extends Component {
                 style={{backgroundColor:'white',alignItems:'center'}}
                 onPress={()=>{
                          push({key:'WebView',url:classifyArea.activityUrl})
+                         classifyArea.ifRedShow == 1 && this.props.cleanRed('hotArealist',i)
                      }}
                 key={'key_'+i}>
                 {classifyArea.ifRedShow == 1 && (<View style={[styles.redTip,{top:-6,right:6,}]}/>)}

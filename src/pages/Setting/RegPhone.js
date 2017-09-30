@@ -29,7 +29,7 @@ import {navigateReplaceIndex, navigatePush, navigatePop} from '../../redux/actio
 import {register} from '../../redux/actions/login'
 import {checkPhoneNum, Toast} from '../../util'
 
-const webUrl = 'http://103.236.253.138:8088/declare.html';
+const webUrl = 'http://103.236.253.138:9090/phxrProject/hy/h5/declare.html';
 import {ActionSheet} from 'antd-mobile';
 class RegPhone extends Component {
     constructor(props: Object) {
@@ -341,7 +341,7 @@ class RegPhone extends Component {
 
 
                     <View style={{flexDirection:'row'}}>
-                        {this._renderRowMain('验证码:', '输入您收到的验证码',
+                        {this._renderRowMain('验证码:', '请输入验证码',
                             (text) => {
                                 this.setState({ymCode: text})
                             },
@@ -446,7 +446,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'red'
     },
     buttonContainerStyle: {
-        marginRight: 15,
+        marginRight: 10,
         marginLeft: -5,
         height: 35,
         marginVertical: 5,

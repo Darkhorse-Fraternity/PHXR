@@ -27,7 +27,7 @@ import {navigatePop, navigatePush} from '../../redux/actions/nav'
 import {login} from '../../redux/actions/login'
 import {checkPhoneNum, Toast} from '../../util'
 import WBButton from '../../components/Base/WBButton'
-const webUrl = 'https://static.dayi.im/static/fudaojun/rule.html?version=20160603182000';
+const webUrl = 'http://103.236.253.138:9090/phxrProject/hy/h5/declare.html';
 import {logo, placeholder} from '../../../source'
 class RegPhone extends Component {
   constructor(props: Object) {

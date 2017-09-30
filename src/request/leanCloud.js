@@ -276,8 +276,8 @@ export function classBatch(requests:[Object]):Object{
 
 export function pushInstallation(OS:String,token:string,userObjectId:string = '') {
     let installationId = OS == 'ios' ? { "deviceToken": token}:{ "installationId": token}
-    const LeanCloud_APP_ID = 'q81jdsbi5qp679fi5o46i5nppjgycztgivwj30707xfvehzt';
-    const LeanCloud_APP_KEY = 'y6ffzv6mq705pya2pd6kgl1ni1vwlppesis7f1qi19afg5nn';
+    const LeanCloud_APP_ID = 'SdQPXWclQiHFCTAiyV4EHWbh-gzGzoHsz';
+    const LeanCloud_APP_KEY = 'BYtMcQSgPY4NwwsDWFVnYeks';
     return {
         scheme:'https',
         host:'leancloud.cn/1.1',
