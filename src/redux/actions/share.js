@@ -11,30 +11,49 @@ export const Share_TO_ZONE = 'Share_TO_ZONE'
 export const SHARE_TO_SINA = 'SHARE_TO_SINA'
 import * as WeChat from 'react-native-wechat';
 import * as QQAPI from 'react-native-qq';
-
+import {Toast} from '../../util'
 
 WeChat.registerApp('wxbd3fc96a076aec22')
 
 export function shareTo(type: string,param:object):Function {
 
-    if(type ==SHARE_TO_TIMELINE || type == SHARE_TO_SESSION){
-        shareToWechat(type,param)
-    }else if(type ==SHARE_TO_QQ || type == Share_TO_ZONE) {
-        shareToQQ(type,param)
-    }else if(type == SHARE_TO_SINA) {
-        shareToWeibo(param)
+    return dispatch => {
+        if(type ==SHARE_TO_TIMELINE || type == SHARE_TO_SESSION){
+            dispatch(shareToWechat(type,param))
+        }else if(type ==SHARE_TO_QQ || type == Share_TO_ZONE) {
+            dispatch(shareToQQ(type,param))
+        }else if(type == SHARE_TO_SINA) {
+            dispatch(shareToWeibo(param))
+        }
     }
+
 
 
 }
 
 
-export function shareToWechat(type: string,param:object): Function {
+export  function shareToWechat(type: string,param:object): Function {
+
+
+
 
     let Method = WeChat.shareToTimeline;
     if (type == SHARE_TO_SESSION) Method = WeChat.shareToSession
 
     return async(dispatch)=> {
+        const res = await WeChat.isWXAppInstalled()
+        if(!res){
+            Toast.show('需要先安装微信!')
+            return
+        }
+        const res2 = await WeChat.isWXAppSupportApi()
+        if(!res2){
+            Toast.show('当前版本微信不支持!')
+            return
+        }
+
+
+
         try {
             let result = await Method({
                 type: 'news',
@@ -64,7 +83,10 @@ export function shareToQQ(type:string,param:object):Function{
     if(type == Share_TO_ZONE)  Method = QQAPI.shareToQzone
 
     return async (dispatch)=> {
+
         try {
+            await QQAPI.isQQInstalled()
+            await QQAPI.isQQSupportApi()
             let result = await Method({
                 type: 'news',
                 title: param.title||'分享标题',
@@ -77,7 +99,8 @@ export function shareToQQ(type:string,param:object):Function{
                 type, result
             })
         } catch (e) {
-            console.error('share text message to time line failed with:', e.message);
+            Toast.show('分享失败,请检查QQ是否安装,或者版本是否支持。')
+            console.log('share text message to time line failed with:', e.message);
         }
     }
 }

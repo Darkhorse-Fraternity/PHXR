@@ -57,8 +57,6 @@ import createInvoke from 'react-native-webview-invoke/native'
             dispatch(logout())
         },
         uploadImage:  (url)=>{
-            console.log('url:', url);
-            console.log('url:');
             return new Promise(function (resolve, reject) {
                 // setTimeout(() => resolve("111"), 1);
                 const opt = {
@@ -137,6 +135,7 @@ export  default class BaseWebView extends Component {
             this.sendUserID(nextProps.userId)
         }
     }
+
 
 
 
