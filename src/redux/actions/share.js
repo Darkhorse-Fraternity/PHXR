@@ -41,20 +41,22 @@ export  function shareToWechat(type: string,param:object): Function {
     if (type == SHARE_TO_SESSION) Method = WeChat.shareToSession
 
     return async(dispatch)=> {
-        const res = await WeChat.isWXAppInstalled()
-        if(!res){
-            Toast.show('需要先安装微信!')
-            return
-        }
-        const res2 = await WeChat.isWXAppSupportApi()
-        if(!res2){
-            Toast.show('当前版本微信不支持!')
-            return
-        }
 
 
 
         try {
+            const res = await WeChat.isWXAppInstalled()
+            if(!res){
+                Toast.show('需要先安装微信!')
+                return
+            }
+            const res2 = await WeChat.isWXAppSupportApi()
+            if(!res2){
+                Toast.show('当前版本微信不支持!')
+                return
+            }
+
+
             let result = await Method({
                 type: 'news',
                 title: param.title||'web image',
@@ -71,6 +73,7 @@ export  function shareToWechat(type: string,param:object): Function {
                 type, result
             })
         } catch (e) {
+            Toast.show(e.message)
             console.error('share text message to time line failed with:', e.message);
         }
     }
